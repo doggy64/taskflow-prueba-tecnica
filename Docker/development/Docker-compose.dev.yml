@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  taskflow-dev:
+    build:
+      context: ../../
+      dockerfile: docker/development/Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../../:/app
+      - /app/node_modules
+      - /app/.next
+    env_file:
+      - ../../.env
+    environment:
+      - NODE_ENV=development

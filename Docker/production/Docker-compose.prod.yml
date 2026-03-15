@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  taskflow-dev:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile.prod
+      
+    ports:
+      - "3000:3000"
+  
+    env_file:
+      - ../../.env  
+    
