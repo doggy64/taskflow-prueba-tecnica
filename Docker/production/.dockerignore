@@ -1,0 +1,38 @@
+# Node
+node_modules
+npm-debug.log
+
+# Next
+.next
+out
+
+# Git
+.git
+.gitignore
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.dev
+.env.prod
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# Prisma (migrations se manejan manualmente)
+prisma/migrations/

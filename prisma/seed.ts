@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 async function main() {
 //usuario de prueba para el seed
-  const TEST_USER_ID = '981a3cbe-ca49-475d-a917-19d81ffedd08';
+  const TEST_USER_ID = '0e622b92-0d6e-47f9-a52d-ea104e9558a3';
 
   console.log(`Start seeding for user: ${TEST_USER_ID}...`);
 

@@ -3,7 +3,7 @@ services:
   taskflow-dev:
     build:
       context: ../../
-      dockerfile: docker/development/Dockerfile.dev
+      dockerfile: Docker/development/Dockerfile
     ports:
       - "3000:3000"
     volumes:
@@ -12,5 +12,9 @@ services:
       - /app/.next
     env_file:
       - ../../.env
+      
     environment:
       - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true 
+    restart: unless-stopped
