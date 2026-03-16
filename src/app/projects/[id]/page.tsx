@@ -1,7 +1,8 @@
+import Link from 'next/link'
+import DeleteProjectButton from '@/components/projects/DeleteProjectButton'
 import { createClient } from '@/lib/supabase/server'
 import prisma from '@/lib/prisma'
 import { notFound, redirect } from 'next/navigation'
-import Link from 'next/link'
 
 export default async function ProjectDetailPage({
   params,
@@ -52,12 +53,11 @@ export default async function ProjectDetailPage({
           </div>
           
           <div className="flex gap-3">
-            <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
-              Editar Proyecto
-            </button>
-            <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">
-              Eliminar
-            </button>
+            <Link href={`/projects/${project.id}/edit`} 
+    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">
+    Editar Proyecto
+  </Link>
+  <DeleteProjectButton id={project.id} />
           </div>
         </div>
       </div>
