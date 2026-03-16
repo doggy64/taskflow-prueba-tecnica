@@ -3,7 +3,7 @@ import DeleteProjectButton from '@/components/projects/DeleteProjectButton'
 import { createClient } from '@/lib/supabase/server'
 import prisma from '@/lib/prisma'
 import { notFound, redirect } from 'next/navigation'
-
+import TaskList from '@/components/tasks/TaskList'
 export default async function ProjectDetailPage({
   params,
 }: {
@@ -65,9 +65,12 @@ export default async function ProjectDetailPage({
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-900">Tareas del Proyecto</h2>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors">
+          <Link 
+            href={`/projects/${project.id}/tasks/new`}
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-sm transition-colors"
+          >
             + Nueva Tarea
-          </button>
+          </Link>
         </div>
 
         {project.tasks.length === 0 ? (
@@ -76,7 +79,13 @@ export default async function ProjectDetailPage({
           </div>
         ) : (
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <p className="text-sm text-gray-500">Aquí irá la lista interactiva de tareas...</p>
+            {project.tasks.length === 0 ? (
+          <div className="text-center py-12 bg-white rounded-xl border border-dashed border-gray-300">
+            <p className="text-sm text-gray-500">Aún no hay tareas en este proyecto.</p>
+          </div>
+        ) : (
+          <TaskList tasks={project.tasks} projectId={project.id} />
+        )}
           </div>
         )}
       </div>
